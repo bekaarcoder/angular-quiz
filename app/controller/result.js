@@ -36,6 +36,10 @@ angular.module('quizApp')
 		}
 	}
 
+	$scope.setQues = function(index){
+		$scope.activeQues = index;
+	}
+
 	$scope.showChart = true;
 	$scope.viewChart = true;
 	$scope.viewAnalytics = function(){
