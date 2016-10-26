@@ -52,7 +52,7 @@
 			"type": "Output Device",
 			"name": "Laser Printer",
 			"description": "A laser printer produces good quality images by the same technology that photocopiers use. A drum coated with photosensitive material is charged, then an image is written onto it by a laser (or LEDs) which makes those areas lose the charge. The drum then rolls through toner (tiny plastic particles of pigment) that are attracted to the charged areas of the drum.",
-			"image_url": "http://www.supportfortech.co.uk/images/samsung/samsung-printer-support-img04.png"
+			"image_url": "https://cdn0.iconfinder.com/data/icons/huge-black-icons/512/Printer.png"
 		}
 	]
 }
