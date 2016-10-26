@@ -1,0 +1,58 @@
+{
+	"factsData": [
+		{
+			"type": "Input Device",
+			"name": "Keyboard",
+			"description": "The computer keyboard is used to enter text information into the computer, as when you type the contents of a report. The keyboard can also be used to type commands directing the computer to perform certain actions.",
+			"image_url": "http://pngimg.com/upload/keyboard_PNG5862.png"
+		},
+		{
+			"type": "Input Device",
+			"name": "Mouse",
+			"description": "The mouse pointing device sits on your work surface and is moved with your hand. In older mice, a ball in the bottom of the mouse rolls on the surface as you move the mouse, and internal rollers sense the ball movement and transmit the information to the computer via the cord of the mouse.",
+			"image_url": "http://pngimg.com/upload/computer_mouse_PNG7666.png"
+		},
+		{
+			"type": "Input Device",
+			"name": "Touch Pad",
+			"description": "Most laptop computers today have a touch pad pointing device. You move the on-screen cursor by sliding your finger along the surface of the touch pad. The buttons are located below the pad, but most touch pads allow you to perform “mouse clicks” by tapping on the pad itself.",
+			"image_url": "https://cdn1.iconfinder.com/data/icons/user-ui-vol-1-1/16/touch_click_monitor_lcd_touchpad_touchscreen-512.png"
+		},
+		{
+			"type": "Input Device",
+			"name": "Joystick",
+			"description": "Joysticks and other game controllers can also be connected to a computer as pointing devices. They are generally used for playing games, and not for controlling the on-screen cursor in productivity software.",
+			"image_url": "http://www.pngmart.com/files/1/Joystick-Transparent-PNG.png"
+		},
+		{
+			"type": "Input Device",
+			"name": "Graphics Tablet",
+			"description": "A graphics tablet consists of an electronic writing area and a special “pen” that works with it. Graphics tablets allows artists to create graphical images with motions and actions similar to using more traditional drawing tools. ",
+			"image_url": "http://downloadicons.net/sites/default/files/graphics-tablet-57301.png"
+		},
+		{
+			"type": "Output Device",
+			"name": "CRT Monitor",
+			"description": "The traditional output device of a personal computer has been the CRT (Cathode Ray Tube) monitor. Just like a television set (an older one, anyway) the CRT monitor contains a large cathode ray tube that uses an electron beam of varying strength to “paint” a picture onto the color phosphorescent dots on the inside of the screen.",
+			"image_url": "http://ps1.lansa.com/images/icons/hot/512/crt_monitor_512.png"
+		},
+		{
+			"type": "Output Device",
+			"name": "Flat Panel Monitor",
+			"description": "A flat panel display usually uses an LCD (Liquid Crystal Display) screen to display output from the computer. The LCD consists of several thin layers that polarize the light passing through them. The polarization of one layer, containing long thin molecules called liquid crystals, can be controlled electronically at each pixel, blocking varying amounts of the light to make a pixel lighter or darker.",
+			"image_url": "http://www.pngall.com/wp-content/uploads/2016/04/Monitor.png"
+		},
+		{
+			"type": "Output Device",
+			"name": "Ink Jet Printer",
+			"description": "For hardcopy (printed) output, you need some kind of printer attached to your computer (or available over a network). The most common type of printer for home systems is the color ink jet printer. These printers form the image on the page by spraying tiny droplets of ink from the print head. The printer needs several colors of ink (cyan, yellow, magenta, and black) to make color images.",
+			"image_url": "http://tricera.ca/images/product/e/epson-surecolor-p600-wide-format-inkjet-printer-c11ce21201.png"
+		},
+		{
+			"type": "Output Device",
+			"name": "Laser Printer",
+			"description": "A laser printer produces good quality images by the same technology that photocopiers use. A drum coated with photosensitive material is charged, then an image is written onto it by a laser (or LEDs) which makes those areas lose the charge. The drum then rolls through toner (tiny plastic particles of pigment) that are attracted to the charged areas of the drum.",
+			"image_url": "http://www.supportfortech.co.uk/images/samsung/samsung-printer-support-img04.png"
+		}
+	]
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz Page</title>
+</head>
+<body>
+	<div class="container" ng-controller="QuizCtrl" ng-hide="quizMetrics.activeQuiz">
+		<div class="page-header">
+			<h2>Lets Do The Quiz</h2>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<a class="btn btn-warning pull-right" href="/" ng-click="backToFact()">Back to Facts</a>
+			</div>
+			<div class="col-sm-8">
+				<h4>Progress:</h4>
+				<div class="btn-toolbar">
+					<button class="btn" ng-repeat="question in quizData track by $index" ng-class="{'btn-info': question.selected !== null, 'btn-danger': question.selected === null}" ng-click="setQues($index)">
+						<span class="glyphicon" ng-class="{'glyphicon-ok-sign': question.selected !== null, 'glyphicon-question-sign': question.selected === null}"></span>
+					</button>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h4>Legends:</h4>
+				<div class="row">
+					<div class="col-md-6">
+						<label>Answered: </label>
+						<button class="btn btn-info">
+							<span class="glyphicon glyphicon-ok-sign"></span>
+						</button>
+					</div>
+					<div class="col-md-6">
+						<label>Unanswered: </label>
+						<button class="btn btn-danger">
+							<span class="glyphicon glyphicon-question-sign"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 question-panel" ng-show="quizPanel">
+				<h3>Question:</h3>
+				<h4>{{activeQues + 1 + ". " + quizData[activeQues].text}}</h4>
+				<div class="row" ng-if="quizData[activeQues].type === 'text'">
+					<div class="col-md-6" ng-repeat="option in quizData[activeQues].options">
+						<div class="well well-sm opt" ng-click="selectAns($index)" ng-class="{'bg-info': $index === quizData[activeQues].selected}">{{option.answer}}</div>
+					</div>
+				</div>
+				<div class="row" ng-if="quizData[activeQues].type === 'image'">
+					<div class="col-md-6" ng-repeat="option in quizData[activeQues].options">
+						<div class="well well-sm text-center opt" ng-click="selectAns($index)" ng-class="{'bg-info': $index === quizData[activeQues].selected}">
+							<img ng-src="{{option.answer}}" class="img-ans">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<button class="btn btn-info" ng-click="quesAnswered()">Continue</button>
+						<button class="btn btn-info" ng-click="prevQues()" ng-if="activeQues > 0">Previous</button>
+					</div>
+					<div class="col-md-6">
+						<button class="btn btn-warning pull-right" ng-click="quizSubmit()">Submit Quiz</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-8" ng-hide="finalize">
+				<div class="well well-sm" style="margin-top: 10px;">
+					You have answered all the question. May be you want to Submit the Quiz?
+					<br><br>
+					<button class="btn btn-sm btn-info" ng-click="showResult()">Yes, Submit</button>
+					<button class="btn btn-sm btn-danger" ng-click="getBackToQuiz()">No, Get back to Quiz</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="submitModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						Are you sure that you want to finalize this quiz?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" ng-click="showResult()">Yes, Submit</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container" ng-controller="ResultCtrl" ng-show="quizMetrics.resultActive">
+		<div class="page-header">
+			<h1>Check Your Result</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<a class="btn btn-warning pull-right" href="/" ng-click="backToFact()">Back to Facts</a>
+			</div>
+			<div class="col-sm-12">
+				<h2>Your Score</h2>
+				<p>
+					<strong>Correct Answers: </strong>{{quizMetrics.numCorrect}} out of {{totalQues}}
+					<br>
+					<strong>Percentage Scored: </strong>{{calPercent() | number:2}}%
+				</p>
+			</div>
+			<div class="col-sm-8">
+				<h4>Result:</h4>
+				<div class="btn-toolbar">
+					<button class="btn" ng-repeat="question in quesData track by $index" ng-class="{'btn-success': question.correct === true, 'btn-danger': question.correct === false, 'btn-info': question.correct === null}" ng-click="setQues($index)">
+						<span class="glyphicon" ng-class="{'glyphicon-ok': question.correct === true, 'glyphicon-remove': question.correct === false, 'glyphicon-question-sign': question.correct === null}"></span>
+					</button>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h4>Legends:</h4>
+				<div class="row">
+					<div class="col-md-6">
+						<label>Answered: </label>
+						<button class="btn btn-success">
+							<span class="glyphicon glyphicon-ok"></span>
+						</button>
+					</div>
+					<div class="col-md-6">
+						<label>Unanswered: </label>
+						<button class="btn btn-danger">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 question-panel">
+				<h3>Question:</h3>
+				<h4>{{activeQues + 1 + ". " + quesData[activeQues].text}}</h4>
+				<div class="row" ng-if="quesData[activeQues].type === 'text'">
+					<div class="col-md-6" ng-repeat="option in quesData[activeQues].options">
+						<div class="well well-sm opt" ng-class="optionReview($index)">{{option.answer}}</div>
+					</div>
+				</div>
+				<div class="row" ng-if="quesData[activeQues].type === 'image'">
+					<div class="col-md-6" ng-repeat="option in quesData[activeQues].options">
+						<div class="well well-sm text-center opt" ng-class="optionReview($index)">
+							<img ng-src="{{option.answer}}" class="img-ans">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<button class="btn btn-info" ng-click="continueQues()">Continue</button>
+						<button class="btn btn-info" ng-click="prevQues()" ng-if="activeQues > 0">Previous</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 text-center">
+				<h3>View Analytics</h3>
+				<div class="row" ng-show="viewChart">
+					<div class="col-md-12 text-center">
+						<button class="btn btn-sm btn-info" ng-click="viewAnalytics()">Click To View</button>
+					</div>
+				</div>
+				<div class="row" ng-hide="showChart">
+					<div class="col-md-12">
+						<canvas id="myChart"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

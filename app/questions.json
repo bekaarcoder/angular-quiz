@@ -1,0 +1,85 @@
+{
+	"quizData": [
+		{
+			"type": "text",
+			"text": "Which of the following memories is an optical memory?",
+			"options": [
+				{
+					"answer": "Floppy Disk"
+				},
+				{
+					"answer": "Bubble Memories"
+				},
+				{
+					"answer": "CD–ROM"
+				},
+				{
+					"answer": "Core Memories"
+				}
+			],
+			"selected": null,
+			"correct": null
+		},
+		{
+			"type": "text",
+			"text": "DNS refers to",
+			"options": [
+				{
+					"answer": "Data Number Sequence"
+				},
+				{
+					"answer": "Digital Network Service"
+				},
+				{
+					"answer": "Domain Name System"
+				},
+				{
+					"answer": "Disk Numbering System"
+				}
+			],
+			"selected": null,
+			"correct": null
+		},
+		{
+			"type": "text",
+			"text": "Java was originally invented by",
+			"options": [
+				{
+					"answer": "Oracle"
+				},
+				{
+					"answer": "Microsoft"
+				},
+				{
+					"answer": "Novell"
+				},
+				{
+					"answer": "Sun"
+				}
+			],
+			"selected": null,
+			"correct": null
+		},
+		{
+			"type": "image",
+			"text": "Which of the following is Input Device?",
+			"options": [
+				{
+					"answer": "http://pngimg.com/upload/keyboard_PNG5862.png"
+				},
+				{
+					"answer": "http://ps1.lansa.com/images/icons/hot/512/crt_monitor_512.png"
+				},
+				{
+					"answer": "http://www.pngall.com/wp-content/uploads/2016/04/Monitor.png"
+				},
+				{
+					"answer": "http://www.supportfortech.co.uk/images/samsung/samsung-printer-support-img04.png"
+				}
+			],
+			"selected": null,
+			"correct": null
+		}
+	],
+	"correctAns": [2, 3, 0, 1]
+}

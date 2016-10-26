@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="quizApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS Quiz App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-controller="listCtrl">
+  <div class="container" ng-hide="quizMetrics.activeFact">
+    <div class="page-header">
+      <h1>Interesting Computer Facts</h1>
+      <h3>Computers have become a very important part of our daily life. Learn about some of these interesting facts.</h3>
+    </div>
+    <div>
+      <div class="row">
+        <div class="col-sm-12">
+          <form class="form-inline well well-sm clearfix">
+            <div class="inner-addon left-addon">
+              <i class="glyphicon glyphicon-search"></i>
+              <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+              <button type="button" class="btn btn-warning pull-right" ng-click="quizRoute()">Start Quiz</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4" ng-repeat="data in myData | filter:search">
+          <div class="row">
+            <div class="col-md-offset-1 col-md-10 devices">
+              <div class="row">
+                <div class="col-md-6 col-xs-12">
+                  <img ng-src="{{data.image_url}}" class="img-rounded img-responsive" width="150" height="150" >
+                </div>
+                <div class="col-md-6 col-xs-12">
+                  <h4>{{data.type}}</h4>
+                  <h4>{{data.name}}</h4>
+                  <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#device-info" ng-click="displayInfo(data)">Read In Details</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div id="device-info" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>{{activeDevice.name}}</h2>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-xs-offset-3 col-xs-6">
+                <img ng-src="{{activeDevice.image_url}}" class="img-rounded img-responsive img-size">
+              </div>
+              <div class="col-md-12">
+                <strong>Type: </strong>{{activeDevice.type}}<br>
+                <strong>Description:</strong>
+                <p>{{activeDevice.description}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-view></div>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="quiz/quiz.js"></script>
+  <script src="app.js"></script>
+  <script src="factories.js"></script>
+  <script src="dataservice.js"></script>
+  <script src="controller/result.js"></script>
+  <script src="bower_components/chart.js/dist/chart.min.js"></script>
+</body>
+</html>
